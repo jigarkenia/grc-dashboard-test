@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import type { Id } from "@/convex/_generated/dataModel";
 import { AppShell } from "@/components/grc/AppShell";
 import { StatusBadge } from "@/components/grc/StatusBadge";
 import { fmtDate, licenseStatus } from "@/lib/grc";
@@ -25,7 +26,10 @@ import { toast } from "sonner";
 
 export default function LicenseDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const license = useQuery(api.licenses.get, id ? { id } : "skip");
+  const license = useQuery(
+    api.licenses.get,
+    id ? { id: id as unknown as Id<"licenses"> } : "skip",
+  );
   const removeLicense = useMutation(api.licenses.remove);
   const navigate = useNavigate();
 

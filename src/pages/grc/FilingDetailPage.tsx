@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import type { Id } from "@/convex/_generated/dataModel";
 import { AppShell } from "@/components/grc/AppShell";
 import { StatusBadge } from "@/components/grc/StatusBadge";
 import { filingStatus, fmtDate, fmtINR, toISODate } from "@/lib/grc";
@@ -25,7 +26,10 @@ import { toast } from "sonner";
 
 export default function FilingDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const filing = useQuery(api.filings.get, id ? { id } : "skip");
+  const filing = useQuery(
+    api.filings.get,
+    id ? { id: id as unknown as Id<"filings"> } : "skip",
+  );
   const markFiled = useMutation(api.filings.markFiled);
   const removeFiling = useMutation(api.filings.remove);
   const navigate = useNavigate();
