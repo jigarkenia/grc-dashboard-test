@@ -59,8 +59,8 @@ export function AppShell({ children }: { children: ReactNode }) {
             <ShieldCheck className="size-5" />
           </div>
           <div className="leading-tight">
-            <p className="text-sm font-semibold tracking-tight">ComplianceAge</p>
-            <p className="text-xs text-muted-foreground">GRC Workspace</p>
+            <p className="text-sm font-semibold tracking-tight">CAS Compliance</p>
+            <p className="text-xs text-muted-foreground">Your compliance at a glance</p>
           </div>
         </div>
 
@@ -118,7 +118,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <ShieldCheck className="size-4" />
           </div>
           <span className="text-sm font-semibold tracking-tight">
-            ComplianceAge
+            CAS Compliance
           </span>
         </div>
         <Button variant="ghost" size="sm" onClick={handleSignOut}>
